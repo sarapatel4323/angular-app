@@ -1,0 +1,26 @@
+<div class="api-container">
+  <h1>API Data</h1>
+  <p>Here is the data fetched from a public API:</p>
+
+  <!-- Reactive Form for Filtering -->
+  <form [formGroup]="filterForm" (ngSubmit)="onFilter()">
+    <div class="form-group">
+      <label for="filter">Search:</label>
+      <input
+        id="filter"
+        type="text"
+        formControlName="search"
+        placeholder="Type to filter..."
+      />
+    </div>
+    <button type="submit" [disabled]="filterForm.invalid">Filter</button>
+  </form>
+
+  <!-- Display Data in Cards -->
+  <div class="data-grid">
+    <div *ngFor="let item of filteredData" class="data-card">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.body }}</p>
+    </div>
+  </div>
+</div>
